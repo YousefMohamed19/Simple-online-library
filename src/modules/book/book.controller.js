@@ -47,7 +47,7 @@ export const updateBookById = async (req, res,next) => {
         const {id} = req.params
         const {title,content,author,publishedDate} = req.body
         const updatedBook = await Book.findByIdAndUpdate(id,{title,content,author,publishedDate},{new:true})
-        if(!book){
+        if(!updatedBook){
             throw new Error('Book not found',{cause:404})
         }
         res.status(200).json({message:'Book updated successfully',success:true,data:updatedBook})  
